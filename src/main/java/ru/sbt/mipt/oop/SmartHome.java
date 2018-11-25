@@ -2,11 +2,14 @@ package ru.sbt.mipt.oop;
 
 //import com.sun.javafx.scene.control.skin.VirtualFlow;
 
+import ru.sbt.mipt.oop.Alarm.Alarm;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
 public class SmartHome {
     Collection<Room> rooms;
+    Alarm alarm;
 
     public SmartHome() {
         rooms = new ArrayList<>();
@@ -33,4 +36,9 @@ public class SmartHome {
             }
         }
     }
+
+    public Alarm getAlarm() {
+        return alarm;
+    }
+
 }

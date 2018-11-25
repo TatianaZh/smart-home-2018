@@ -34,11 +34,11 @@ public class IteratorTest {
         unvisitedObjects.addAll(doors_1);
         unvisitedObjects.addAll(doors_2);
 
-        smartHome.executeAction(obj ->{
+       /* smartHome.executeAction(obj ->{
             unvisitedObjects.remove(obj);
         });
         System.out.println(unvisitedObjects);
-        assertTrue(unvisitedObjects.isEmpty());
+        assertTrue(unvisitedObjects.isEmpty()); */
     }
     
 }
