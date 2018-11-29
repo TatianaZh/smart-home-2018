@@ -1,11 +1,9 @@
 package ru.sbt.mipt.oop;
 
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
+import ru.sbt.mipt.oop.Alarm.AlarmEventProcessor;
 
-import static ru.sbt.mipt.oop.SensorEventType.*;
+import java.io.IOException;
 
 public class Application {
 
@@ -17,6 +15,9 @@ public class Application {
 
     public static void main(String... args) throws IOException {
         SmartHome smartHome = smartHomeLoader.loadSmartHome();
+        HomeEventsObserver.registerEventProcessor(new LightsEventProcessor());
+        HomeEventsObserver.registerEventProcessor(new DoorEventProcessor());
+        HomeEventsObserver.registerEventProcessor(new AlarmEventProcessor());
         HomeEventsObserver.runEventsCycle(smartHome);
     }
 

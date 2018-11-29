@@ -7,6 +7,10 @@ public class HomeEventsObserver{
 
     private static final Collection<EventProcessor> eventProcessors = new ArrayList<>();
 
+    public static void registerEventProcessor(EventProcessor eventProcessor) {
+        eventProcessors.add(eventProcessor);
+    }
+
 
     public static void runEventsCycle(SmartHome smartHome) {
         SensorEvent event = RandomSensorEventProvider.getNextSensorEvent();
