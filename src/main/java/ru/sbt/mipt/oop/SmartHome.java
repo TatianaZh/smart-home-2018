@@ -1,7 +1,5 @@
 package ru.sbt.mipt.oop;
 
-//import com.sun.javafx.scene.control.skin.VirtualFlow;
-
 import ru.sbt.mipt.oop.Alarm.Alarm;
 
 import java.util.ArrayList;
