@@ -2,11 +2,11 @@ package ru.sbt.mipt.oop.Tests.RemoteControlTests;
 
 import org.junit.Test;;
 import ru.sbt.mipt.oop.Alarm.AlarmStateEnum;
-import ru.sbt.mipt.oop.Light;
+import ru.sbt.mipt.oop.Parts.Light;
 
 import ru.sbt.mipt.oop.RemoteControl.AlarmRingCommand;
 import ru.sbt.mipt.oop.RemoteControl.RemoteControlImpl;
-import ru.sbt.mipt.oop.Room;
+import ru.sbt.mipt.oop.Parts.Room;
 import ru.sbt.mipt.oop.SmartHome;
 
 import java.util.ArrayList;

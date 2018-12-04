@@ -1,11 +1,12 @@
 package ru.sbt.mipt.oop.Events;
 
 import ru.sbt.mipt.oop.*;
+import ru.sbt.mipt.oop.Processors.EventProcessor;
+import ru.sbt.mipt.oop.Sensors.RandomSensorEventProvider;
+import ru.sbt.mipt.oop.Sensors.SensorEvent;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
-import static ru.sbt.mipt.oop.SensorEventType.*;
 
 public class SensorEventManagerAdapter implements EventsManager{
 

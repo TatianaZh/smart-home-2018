@@ -1,7 +1,7 @@
 package ru.sbt.mipt.oop.Tests.RemoteControlTests;
 import org.junit.Test;
 import ru.sbt.mipt.oop.Alarm.AlarmStateEnum;
-import ru.sbt.mipt.oop.Light;
+import ru.sbt.mipt.oop.Parts.Light;
 
 import ru.sbt.mipt.oop.RemoteControl.*;
 import ru.sbt.mipt.oop.SmartHome;

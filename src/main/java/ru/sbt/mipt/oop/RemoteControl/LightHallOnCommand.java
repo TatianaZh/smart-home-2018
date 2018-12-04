@@ -1,7 +1,7 @@
 package ru.sbt.mipt.oop.RemoteControl;
 
-import ru.sbt.mipt.oop.Light;
-import ru.sbt.mipt.oop.Room;
+import ru.sbt.mipt.oop.Parts.Light;
+import ru.sbt.mipt.oop.Parts.Room;
 import ru.sbt.mipt.oop.SmartHome;
 
 public class LightHallOnCommand implements Command {

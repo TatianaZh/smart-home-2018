@@ -1,9 +1,9 @@
 package ru.sbt.mipt.oop.Tests;
 
 import org.junit.Test;
-import ru.sbt.mipt.oop.Door;
-import ru.sbt.mipt.oop.Light;
-import ru.sbt.mipt.oop.Room;
+import ru.sbt.mipt.oop.Parts.Door;
+import ru.sbt.mipt.oop.Parts.Light;
+import ru.sbt.mipt.oop.Parts.Room;
 import ru.sbt.mipt.oop.SmartHome;
 
 import static org.junit.Assert.assertTrue;

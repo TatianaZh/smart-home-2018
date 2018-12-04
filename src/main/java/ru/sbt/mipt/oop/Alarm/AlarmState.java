@@ -1,6 +1,6 @@
 package ru.sbt.mipt.oop.Alarm;
 
-import ru.sbt.mipt.oop.SensorEvent;
+import ru.sbt.mipt.oop.Sensors.SensorEvent;
 
 public interface AlarmState {
     void turnOn();

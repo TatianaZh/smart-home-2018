@@ -1,7 +1,12 @@
-package ru.sbt.mipt.oop;
-import static ru.sbt.mipt.oop.SensorEventType.DOOR_CLOSED;
+package ru.sbt.mipt.oop.Processors;
+import ru.sbt.mipt.oop.Parts.Door;
+import ru.sbt.mipt.oop.Parts.Room;
+import ru.sbt.mipt.oop.Sensors.SensorEvent;
+import ru.sbt.mipt.oop.SmartHome;
 
-public class HallDoorEventProcessor implements EventProcessor{
+import static ru.sbt.mipt.oop.Sensors.SensorEventType.DOOR_CLOSED;
+
+public class HallDoorEventProcessor implements EventProcessor {
 
 
     @Override

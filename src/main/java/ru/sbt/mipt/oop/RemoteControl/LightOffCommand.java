@@ -1,6 +1,6 @@
 package ru.sbt.mipt.oop.RemoteControl;
 
-import ru.sbt.mipt.oop.Light;
+import ru.sbt.mipt.oop.Parts.Light;
 
 import java.util.List;
 

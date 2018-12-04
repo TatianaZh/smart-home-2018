@@ -1,8 +1,8 @@
 package ru.sbt.mipt.oop.RemoteControl;
 
-import ru.sbt.mipt.oop.Door;
+import ru.sbt.mipt.oop.Parts.Door;
 
-import ru.sbt.mipt.oop.Room;
+import ru.sbt.mipt.oop.Parts.Room;
 import ru.sbt.mipt.oop.SmartHome;
 
 public class CloseHallDoorCommand implements Command {

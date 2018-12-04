@@ -2,9 +2,14 @@ package ru.sbt.mipt.oop.Tests;
 
 import org.junit.Test;
 import ru.sbt.mipt.oop.*;
+import ru.sbt.mipt.oop.Parts.Door;
+import ru.sbt.mipt.oop.Parts.Light;
+import ru.sbt.mipt.oop.Parts.Room;
+import ru.sbt.mipt.oop.Sensors.SensorEvent;
+
 import java.util.*;
 import static org.junit.Assert.*;
-import static ru.sbt.mipt.oop.SensorEventType.*;
+import static ru.sbt.mipt.oop.Sensors.SensorEventType.*;
 
 public class LightEventProcessorTest {
     @Test

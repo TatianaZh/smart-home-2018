@@ -1,4 +1,8 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.Parts;
+import ru.sbt.mipt.oop.Parts.Door;
+import ru.sbt.mipt.oop.Parts.Room;
+import ru.sbt.mipt.oop.SmartHome;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;

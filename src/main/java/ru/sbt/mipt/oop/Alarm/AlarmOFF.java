@@ -1,5 +1,5 @@
 package ru.sbt.mipt.oop.Alarm;
-import ru.sbt.mipt.oop.SensorEvent;
+import ru.sbt.mipt.oop.Sensors.SensorEvent;
 
 public class AlarmOFF implements AlarmState {
     private final Alarm alarm;

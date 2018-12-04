@@ -1,6 +1,8 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.Processors;
 
 import ru.sbt.mipt.oop.Alarm.AlarmStateEnum;
+import ru.sbt.mipt.oop.Sensors.SensorEvent;
+import ru.sbt.mipt.oop.SmartHome;
 
 public class DecoratorForProcessors implements EventProcessor {
     EventProcessor eventProcessor;

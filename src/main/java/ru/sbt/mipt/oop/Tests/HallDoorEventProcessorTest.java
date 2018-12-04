@@ -2,6 +2,12 @@ package ru.sbt.mipt.oop.Tests;
 
 import org.junit.Test;
 import ru.sbt.mipt.oop.*;
+import ru.sbt.mipt.oop.Parts.Door;
+import ru.sbt.mipt.oop.Parts.Light;
+import ru.sbt.mipt.oop.Parts.Room;
+import ru.sbt.mipt.oop.Sensors.SensorEvent;
+import ru.sbt.mipt.oop.Sensors.SensorEventType;
+
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.Assert.assertTrue;

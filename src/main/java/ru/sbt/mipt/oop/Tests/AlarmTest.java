@@ -2,10 +2,9 @@ package ru.sbt.mipt.oop.Tests;
 import org.junit.Test;
 
 import ru.sbt.mipt.oop.Alarm.Alarm;
-import ru.sbt.mipt.oop.Alarm.AlarmState;
 import ru.sbt.mipt.oop.Alarm.AlarmStateEnum;
-import ru.sbt.mipt.oop.SensorEvent;
-import ru.sbt.mipt.oop.SensorEventType;
+import ru.sbt.mipt.oop.Sensors.SensorEvent;
+import ru.sbt.mipt.oop.Sensors.SensorEventType;
 
 import static org.junit.Assert.*;
 
