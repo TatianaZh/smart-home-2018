@@ -1,72 +1,65 @@
 package ru.sbt.mipt.oop.Tests;
 
+import org.junit.Before;
 import org.junit.Test;
-import ru.sbt.mipt.oop.*;
+
 import ru.sbt.mipt.oop.Parts.Door;
 import ru.sbt.mipt.oop.Parts.Light;
 import ru.sbt.mipt.oop.Parts.Room;
+import ru.sbt.mipt.oop.Processors.LightsEventProcessor;
 import ru.sbt.mipt.oop.Sensors.SensorEvent;
+import ru.sbt.mipt.oop.Sensors.SensorEventType;
+import ru.sbt.mipt.oop.SmartHome;
 
-import java.util.*;
-import static org.junit.Assert.*;
-import static ru.sbt.mipt.oop.Sensors.SensorEventType.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class LightEventProcessorTest {
+    private SensorEvent event;
+    private SmartHome smartHome;
+
+    @Before
+    public void before() {
+        List<Door> doors = new ArrayList<>();
+        doors.add(new Door(true, "1"));
+        doors.add(new Door(false, "2"));
+        List<Light> lights = new ArrayList<>();
+        lights.add(new Light("1", true));
+        lights.add(new Light("2", false));
+        List<Room> rooms = new ArrayList<>();
+        rooms.add(new Room(lights, doors, "hall"));
+
+        smartHome = new SmartHome(rooms);
+    }
+
+
     @Test
     public void lightIsOnTest() {
-        List<Light> arrayListForLight = new ArrayList();
-        Light light;
-        for (int i = 1; i <= 10; i++) {
-            light = new Light("" + i, true);
-            arrayListForLight.add(light);
-        }
 
-        List<Door> arrayListForDoor = new ArrayList<>();
-        Door door;
-        for (int i = 0; i < 5; i++) {
-            door = new Door(false, "" + i);
-            arrayListForDoor.add(door);
-        }
+        event = new SensorEvent(SensorEventType.LIGHT_ON, "1");
+        new LightsEventProcessor().processEvent(smartHome, event);
+        Collection<Room> rooms = smartHome.getRooms();
 
-        ArrayList<Room> arrayListForRoom = new ArrayList<>();
-        Room room = new Room(arrayListForLight, arrayListForDoor, "room1");
-        arrayListForRoom.add(room);
-        SmartHome smartHome = new SmartHome(arrayListForRoom);
-        SensorEvent sensorEvent = new SensorEvent(LIGHT_ON, "1");
-
-        for (Room rooms : smartHome.getRooms()) {
-            for (Light lights : room.getLights()) {
-                if (lights.getId().equals(sensorEvent.getObjectId())) {
-                    assertTrue(lights.isOn());
-                }
-            }
+        for (Room room : rooms) {
+            Light light = room.getLightById("1");
+            assertTrue(light.isOn());
         }
     }
 
     @Test
     public void lightsIsOffTest() {
-        SmartHome smartHome = new SmartHome();
-        SensorEvent sensorEvent = new SensorEvent(LIGHT_OFF, "1");
-        Light light = new Light("1", false);
 
-        Door door = new Door(false, "1");
+        event = new SensorEvent(SensorEventType.LIGHT_OFF, "2");
+        new LightsEventProcessor().processEvent(smartHome, event);
+        Collection<Room> rooms = smartHome.getRooms();
 
-        ArrayList<Light> lights = new ArrayList<>();
-        lights.add(light);
-
-        ArrayList<Door> doors = new ArrayList<>();
-        doors.add(door);
-
-        Room room = new Room(lights, doors, "object");
-        smartHome.addRoom(room);
-
-        for (Room rooms : smartHome.getRooms()) {
-            for (Light light1 : room.getLights()) {
-                if (light1.getId().equals(sensorEvent.getObjectId())) {
-                    assertFalse(light1.isOn());
-                }
-            }
+        for (Room room : rooms) {
+            Light light = room.getLightById("2");
+            assertFalse(light.isOn());
         }
     }
-
 }

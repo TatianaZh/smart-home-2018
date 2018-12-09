@@ -28,24 +28,4 @@ public class AlarmTest {
         assertEquals(AlarmStateEnum.ON, alarm.getState());
     }
 
-    @Test
-    public void testSystemSensorEvent(){
-        Alarm alarm = new Alarm("1234");
-        alarm.turnOn();
-        SensorEvent sensorEvent = getSensorEvent();
-        alarm.onSensorEvent(sensorEvent);
-        assertEquals(AlarmStateEnum.WAIT_FOR_PASSWORD, alarm.getState());
-    }
-
-    @Test
-    public void testSystemWaitForPassword(){
-        Alarm alarm = new Alarm("1234");
-        alarm.turnOn();
-        SensorEvent sensorEvent = getSensorEvent();
-        alarm.onSensorEvent(sensorEvent);
-        alarm.enterPassword("1236");
-        assertEquals(AlarmStateEnum.RING, alarm.getState());
-    }
-
-
 }

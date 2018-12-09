@@ -20,6 +20,10 @@ public class HomeEventsObserver implements EventsManager {
         this.sensorEventProvider = sensorEventProvider;
     }
 
+    public HomeEventsObserver(SensorEventProvider sensorEventProvider){
+        this.sensorEventProvider = sensorEventProvider;
+    }
+
     @Override
     public void registerEventProcessor(EventProcessor eventProcessor) {
         eventProcessors.add(eventProcessor);
@@ -27,13 +31,13 @@ public class HomeEventsObserver implements EventsManager {
 
     @Override
     public void runEventsCycle(SmartHome smartHome) {
-        SensorEvent event = SensorEventProvider.getNextSensorEvent();
+        SensorEvent event = sensorEventProvider.getNextSensorEvent();
           while (event != null) {
             System.out.println("Got event: " + event);
             for (EventProcessor eventProcessor : eventProcessors) {
                 eventProcessor.processEvent(smartHome, event);
             }
-            event = SensorEventProvider.getNextSensorEvent();
+            event = sensorEventProvider.getNextSensorEvent();
         }
     }
 }

@@ -16,11 +16,6 @@ public class AlarmON implements AlarmState {
     public void turnOff() {}
 
     @Override
-    public void onSensorEvent(SensorEvent event) {
-        alarm.setState(new AlarmPassword(alarm));
-    }
-
-    @Override
     public void enterPassword(String password) {}
 
     @Override

@@ -18,9 +18,6 @@ public class Alarm {
         state.turnOff();
     }
 
-    public void onSensorEvent(SensorEvent sensorEvent) {
-        state.onSensorEvent(sensorEvent);
-    }
     public void enterPassword(String password) {
         state.enterPassword(password);
     }

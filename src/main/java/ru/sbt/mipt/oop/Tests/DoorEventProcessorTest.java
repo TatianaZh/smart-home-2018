@@ -1,55 +1,65 @@
 package ru.sbt.mipt.oop.Tests;
 
+import org.junit.Before;
 import org.junit.Test;
 import ru.sbt.mipt.oop.*;
 import ru.sbt.mipt.oop.Parts.Door;
 import ru.sbt.mipt.oop.Parts.Light;
 import ru.sbt.mipt.oop.Parts.Room;
+import ru.sbt.mipt.oop.Processors.DoorEventProcessor;
 import ru.sbt.mipt.oop.Sensors.SensorEvent;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
-//import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 import static ru.sbt.mipt.oop.Sensors.SensorEventType.*;
 
 public class DoorEventProcessorTest {
+    private SensorEvent event;
+    private SmartHome smartHome;
 
-    @Test
-    public void doorIsClosedTest(){
-        SmartHome smartHome = new SmartHome();
-        SensorEvent sensorEvent = new SensorEvent(DOOR_CLOSED, "1");
-        Door door = new Door(false, "1");
+    @Before
+    public void before() {
+        List<Door> doors = new ArrayList<>();
+        doors.add(new Door(true, "1"));
+        doors.add(new Door(false, "2"));
+        List<Light> lights = new ArrayList<>();
+        lights.add(new Light("1", true));
+        lights.add(new Light("2", false));
+        List<Room> rooms = new ArrayList<>();
+        rooms.add(new Room(lights, doors, "hall"));
 
-        List<Door> listForDoors = new ArrayList<>();
-        listForDoors.add(door);
-        Room room = new Room(new ArrayList<Light>(), listForDoors,"1");
-        smartHome.addRoom(room);
-
-        for (Room rooms : smartHome.getRooms())
-            for (Door doors : rooms.getDoors())
-                if (doors.getId().equals(sensorEvent.getObjectId())) {
-                    assertEquals("" + doors.getId(), "1");
-                }
+        smartHome = new SmartHome(rooms);
     }
 
     @Test
-    public void doorIsOpenedTest(){
-        SmartHome smartHome = new SmartHome();
-        SensorEvent sensorEvent = new SensorEvent(DOOR_OPEN, "1");
-        Door door = new Door(true, "1");
+    public void doorIsClosedTest(){
 
-        List<Door> listForDoors = new ArrayList<>();
-        listForDoors.add(door);
-        Room room = new Room(new ArrayList<Light>(), listForDoors,"1");
-        smartHome.addRoom(room);
+        event = new SensorEvent(DOOR_CLOSED, "1");
+        new DoorEventProcessor().processEvent(smartHome, event);
+        Collection<Room> rooms = smartHome.getRooms();
 
-        for (Room rooms : smartHome.getRooms())
-            for (Door doors : rooms.getDoors())
-                if (doors.getId().equals(sensorEvent.getObjectId())) {
-                    assertEquals("" + doors.getId(), "1");
-                }
+        for (Room room : rooms) {
+            Door door = room.getDoorById("1");
+            assertFalse(door.isOpen());
+        }
+    }
+
+    @Test
+    public void doorIsOpenedTest() {
+
+        event = new SensorEvent(DOOR_OPEN, "2");
+        new DoorEventProcessor().processEvent(smartHome, event);
+        Collection<Room> rooms = smartHome.getRooms();
+
+        for (Room room : rooms) {
+            Door door = room.getDoorById("2");
+            assertTrue(door.isOpen());
+        }
     }
 
 }

@@ -1,5 +1,7 @@
 package ru.sbt.mipt.oop;
 
+import ru.sbt.mipt.oop.Action.Action;
+import ru.sbt.mipt.oop.Action.ActionExecutor;
 import ru.sbt.mipt.oop.Alarm.Alarm;
 import ru.sbt.mipt.oop.Parts.Light;
 import ru.sbt.mipt.oop.Parts.Room;
@@ -10,7 +12,7 @@ import ru.sbt.mipt.oop.Sensors.SensorCommandExecutor;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class SmartHome {
+public class SmartHome implements ActionExecutor {
     Collection<Room> rooms;
     Alarm alarm;
 
@@ -44,4 +46,11 @@ public class SmartHome {
         return alarm;
     }
 
+    @Override
+    public void executeAction(Action action) {
+        action.execute(this);
+        for (Room room : this.getRooms()) {
+            room.executeAction(action);
+        }
+    }
 }

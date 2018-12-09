@@ -16,8 +16,6 @@ public class AlarmRing implements AlarmState {
         alarm.setState(new AlarmOFF(alarm));
     }
 
-    @Override
-    public void onSensorEvent(SensorEvent event) {}
 
     @Override
     public void enterPassword(String password) {}

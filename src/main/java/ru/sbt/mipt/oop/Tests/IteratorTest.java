@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Set;
 
 public class IteratorTest {
+
     @Test
     public void actionableComposite(){
         List<Light> lights_1 = Arrays.asList(new Light("1", false), new Light("2", true));
@@ -34,11 +35,11 @@ public class IteratorTest {
         unvisitedObjects.addAll(doors_1);
         unvisitedObjects.addAll(doors_2);
 
-       /* smartHome.executeAction(obj ->{
+       smartHome.executeAction(obj ->{
             unvisitedObjects.remove(obj);
         });
         System.out.println(unvisitedObjects);
-        assertTrue(unvisitedObjects.isEmpty()); */
+        assertTrue(unvisitedObjects.isEmpty());
     }
     
 }
